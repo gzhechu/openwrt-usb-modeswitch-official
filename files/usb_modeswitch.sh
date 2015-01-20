@@ -38,7 +38,7 @@ FILE="$FOLDER/$VID:$PID"
 #echo $FILE >> /dev/ttyS0
 
 if [ -f $FILE ]; then
-    echo "Config file existed." >> /dev/ttyS0
+    # echo "Config file existed." >> /dev/ttyS0
     TVID=`awk -F "=" '/TargetVendor/ {print $2}' $FILE`
     echo $TVID
     TPIDS=`awk -F "=" '/TargetProductList/ {print $2}' $FILE`
@@ -49,7 +49,7 @@ if [ -f $FILE ]; then
     echo $TPIDV
     # /usr/sbin/usb_modeswitch -v 12d1 -p 1446 -V 12d1 -P 140c -M 55534243123456780000000000000011062000000101000100000000000000
     # echo "$TOOL -v $VID -p $PID -V $TVID -P $TPIDV -M $MSG" >> /dev/ttyS0
-    $TOOL -v $VID -p $PID -V $TVID -P $TPIDV -M $MSG
+    $TOOL -v $VID -p $PID -c $FILE
 fi
 
 fi
