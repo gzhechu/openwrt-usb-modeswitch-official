@@ -34,7 +34,8 @@ elif [ "$LP" = "1" ]; then
 fi
 #echo ${PRODUCT} $VID $PID >> /dev/ttyS0
 
-FILE="$FOLDER/$VID:$PID"
+FILES="$FOLDER/$VID:$PID"*
+for FILE in $FILES; do
 #echo $FILE >> /dev/ttyS0
 
 if [ -f $FILE ]; then
@@ -51,5 +52,5 @@ if [ -f $FILE ]; then
     # echo "$TOOL -v $VID -p $PID -V $TVID -P $TPIDV -M $MSG" >> /dev/ttyS0
     $TOOL -v $VID -p $PID -c $FILE
 fi
-
+done
 fi
